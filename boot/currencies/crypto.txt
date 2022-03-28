@@ -1,0 +1,4 @@
+bitcoin-cash
+eos
+xrp
+stellar

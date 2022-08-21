@@ -32,6 +32,10 @@ func Update(coins map[string]string, c *boot.Config) {
 			readRange = c.Range[coin]
 		case "stellar":
 			readRange = c.Range[coin]
+		case "fio-protocol":
+			readRange = c.Range[coin]
+		case "cronos":
+			readRange = c.Range[coin]
 		}
 
 		rb := &sheets.ValueRange{

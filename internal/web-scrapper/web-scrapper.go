@@ -20,7 +20,6 @@ func (c Client) GetPrice(coins []string) map[string]string {
 	ch := make(chan map[string]string)
 
 	for i, coin := range coins {
-
 		go func(coin string, i int) {
 			resp, _ := http.Get(fmt.Sprintf("%s/%s", c.URL, coin))
 
@@ -28,7 +27,7 @@ func (c Client) GetPrice(coins []string) map[string]string {
 
 			docHTML, err := goquery.NewDocumentFromReader(strings.NewReader(string(data)))
 			if err != nil {
-				panic(err)
+				panic("unable to read document")
 			}
 
 			price := strings.TrimSpace(docHTML.Find(".priceValue").Text())
@@ -38,7 +37,7 @@ func (c Client) GetPrice(coins []string) map[string]string {
 			ch <- cryptoList
 
 			if i == len(coins)-1 {
-				time.Sleep(500 * time.Millisecond)
+				time.Sleep(1 * time.Second)
 				close(ch)
 			}
 

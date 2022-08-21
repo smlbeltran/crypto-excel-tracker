@@ -16,7 +16,9 @@ func main() {
 		URL: cfg.URL,
 	}
 
-	coins := wsc.GetPrice(readCoinsFromFile(os.DirFS(cfg.DirPath)))
+	coinList := readCoinsFromFile(os.DirFS(cfg.DirPath))
+
+	coins := wsc.GetPrice(coinList)
 
 	spreadsheet.Update(coins, cfg)
 }

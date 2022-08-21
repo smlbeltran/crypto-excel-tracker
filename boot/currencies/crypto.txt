@@ -2,3 +2,5 @@ bitcoin-cash
 eos
 xrp
 stellar
+fio-protocol
+cronos
